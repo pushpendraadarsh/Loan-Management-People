@@ -5,7 +5,8 @@ function loading() {
   document.getElementById("body").style.overflow = 'hidden';
   main_content.classList.add("display-none");
   setTimeout(() => {
-    document.getElementById("body").style.overflow = 'auto';
+    document.getElementById("body").style.overflowX = 'hidden';
+    document.getElementById("body").style.overflowY = 'auto';
     main_content.classList.remove("display-none");
     preloader.classList.add("display-none");
   }, 7000);
@@ -58,7 +59,7 @@ function getJSessionId(session) {
     let sessionId = readCookie(session);
   if (sessionId != "") {
   }else{
-    redirect("../../hooks/lockscreen.html");
+    redirect("hooks/lockscreen");
   }
 }
 /*********************GoTo******************** */
@@ -69,13 +70,16 @@ function goTo(page, title, url) {
       window.location.assign(url);
     }
   }
+  
 /*****************Unlocked***************** */
-function unlocked(url_redirect) {
+function unlocked() {
     let lock_area = document.getElementById("lockscreen-container");
+    let login_area = document.getElementById("login_cont");
     lock_area.classList.add("unlocked");
     setTimeout(() => {
         lock_area.classList.add("display-none");
-       goTo("html", "Dashboard", url_redirect);
-       location.reload();
+        login_area.classList.remove("display-none");
+      //  goTo("html", "Dashboard", url_redirect);
+      //  location.reload();
     }, 500);
 }

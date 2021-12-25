@@ -14,7 +14,7 @@
 }
 .sqr-box-600x35px{
     padding: 5px 0 0 10px;
-    width: 600px;
+    width: inherit;
     height: 35px;
     border-radius: 9px;
     color: rgb(36, 33, 216);
@@ -22,10 +22,8 @@
 }
 .sqr-box-600x35px:hover{
     color: chartreuse;
-    /* background-color: blue; */
     font-weight: 800;
-    margin-left: 20px;
-    /* transform: scale(1.2); */
+    transform: scale(1.2);
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .sqr-box-600x50px{
@@ -34,15 +32,17 @@
 }
 .flex-coloumn{
     display: flex;
-    flex-direction:column;
-    align-content: center;
+    flex-direction: column;
+    align-content: flex-start;
     justify-content: space-evenly;
+    flex-wrap: nowrap;
+    align-items: flex-start;
 }
 .flex-row{
     display: flex;
-    flex-direction:row;
-    align-content: center;
-    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-direction: row;
 }
 .title{
     font-weight: 600;
@@ -55,23 +55,38 @@
     background-image: linear-gradient(#D4145A,#FBB03B);
 }
 .close{
-    padding: 5px 12px 5px 12px;
+    padding: 20px 12px 5px 12px;
     border-radius: 50px;
-    font-size: 26px;
+    font-size: 30px;
     color: red;
     font-weight: 1000;
     background-color: white;
-    width: max-content;
-    height: max-content;
-    box-shadow: rgba(10, 64, 126, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    width: 25px;
+    height: 45px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: rgb(10 64 126 / 40%) 0px 0px 0px 2px, rgb(6 24 44 / 65%) 0px 4px 6px -1px, rgb(255 255 255 / 8%) 0px 1px 0px inset;
+}
+.close.close-right-top{
+    padding: 20px 12px 5px 12px;
+    border-radius: 100%;
+    font-size: 30px;
+    color: red;
+    font-weight: 1000;
+    background-color: white;
+    width: 36px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: rgb(10 64 126 / 40%) 0px 0px 0px 2px, rgb(6 24 44 / 65%) 0px 4px 6px -1px, rgb(255 255 255 / 8%) 0px 1px 0px inset;
 }
 .close:active{
     transform: scale(0.9);
 }
-.rel-right-top{
-    position: relative;
+.close-right-top{
+    position: absolute;
     top: -30px;
-    left: 98%;
+    right: -25px;
     cursor: pointer;
 }
 .user-select {
@@ -91,19 +106,160 @@
     background-color: rgb(221, 207, 16);
 }
 .title{
+    cursor: pointer;
     width: max-content;
     height: max-content;
     padding: 2px 1px 2px 2px;
-    border-radius: 20px;
-    background: #e53935;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #e35d5b, #e53935);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #e35d5b, #e53935); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-margin: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(18, 201, 49);
+    border-bottom: solid red 4px;
+    font-weight: 600;
+    font-family: cursive;
+}
+.title:hover{
+    background-color: rgb(198, 201, 18);
+    color: red;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .clickable{
     cursor: pointer;
 }
 .clickable:active{
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 2s linear;
     transform: scale(0.95);
 }
+.plus{
+    position: relative;
+    right: -384px;
+    top: -107px;
+    background-color: rgb(18, 201, 49);
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    border: 2px solid red;
+}
+.plus-icon{
+    position: absolute;
+    left: 10px;
+    bottom: 2px;
+    width: inherit;
+    height: inherit;
+    font-weight: 800;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    
+}
+.plus:active{
+    animation: plus-rotator 0.2s;
+}
+.close-full{
+    display: none;
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-color: transparent;
+}
+.clickable-sms{
+    cursor: pointer;
+    background-color: transparent;
+}
+.clickable-sms-active{
+    visibility: visible;
+    opacity: 1;
+    animation: clickable 0.5s;
+    transition: opacity 2s linear;
+transform: scale(0.95);
+border-radius: 70px;
+}
+
+.btn{
+    width: 155px;
+    height: 25px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: red;
+    font-size: 25px;
+    font-family: sans-serif;
+    color: #91ff00;
+    border: 1px solid #91ff00;
+    box-shadow: rgb(0 0 0 / 15%) 0px 15px 25px, rgb(0 0 0 / 5%) 0px 5px 10px;
+}
+.btn:active{
+    background-color: rgba(255, 0, 0, 0.685);
+    transform: scale(0.9);
+}
+
+.scroll_red::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.scroll_red::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.scroll_red::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+	background-image: linear-gradient(blue,rgba(255, 51, 0, 0.863));
+}
+
+/*
+ *  STYLE 11
+ */
+
+ .scrollbar-2::-webkit-scrollbar-track
+ {
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     background-color: #F5F5F5;
+     border-radius: 10px;
+ }
+ 
+ .scrollbar-2::-webkit-scrollbar
+ {
+     width: 10px;
+     background-color: #F5F5F5;
+ }
+ 
+ .scrollbar-2::-webkit-scrollbar-thumb
+ {
+     background-color: #3366FF;
+     border-radius: 10px;
+     background-image: -webkit-linear-gradient(0deg,
+                                               rgba(255, 255, 255, 0.5) 25%,
+                                               transparent 25%,
+                                               transparent 50%,
+                                               rgba(255, 255, 255, 0.5) 50%,
+                                               rgba(255, 255, 255, 0.5) 75%,
+                                               transparent 75%,
+                                               transparent)
+ }
+ .bold{
+     font-weight: 800;
+     font-size: 30px;
+ }
+ .id{
+     display: none;
+ }
+ .clickable-active{
+    background-color: #dbcecede;
+    opacity: 0.8;
+    border-radius: 13px;
+    margin-left: 18%;
+    width: 78%;
+    border: 2px solid red;
+ }
+ .center{
+     text-align: center;
+     margin: auto;
+ }

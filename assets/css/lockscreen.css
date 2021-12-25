@@ -1,12 +1,12 @@
 * {
     margin: 0;
     padding: 0;
-  }
+}
   html,
   body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   
   body {
@@ -6127,10 +6127,35 @@
   }
 
   /*****************************app modification***********************/
+  .booting{
+    position: relative;
+    top: 0;
+width: 100%;
+height: 5px;
+border-top-left-radius: 100px;
+border-top-right-radius: 100px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  .booting #booting{
+    position: absolute;
+    left: -2em;
+width: 250px;
+height: inherit;
+background-image: linear-gradient(orange,blue,yellow,red);
+animation: boot_login 1s infinite linear;
+  }
+  @keyframes boot_login {
+    0%{
+      left: -10em;
+    }
+    100%{
+      left: 50em;
+    }
+  }
   .date{
       position: absolute;
       top: 10vh;
-      left: 35vw;
+      left: 41vw;
   }
   #time_span{
     color: white;
@@ -6205,3 +6230,181 @@
         opacity: 0;
       }
   }
+
+@keyframes unlocker {
+0%{
+
+}
+100%{
+  
+}
+}  
+
+
+
+.login_container{
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: aliceblue;
+}
+.container{
+  position: relative;
+    top: 5em;
+    margin: auto;
+    width: 38vw;
+    height: 83vh;
+    /* border-radius: 80px;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px, rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px; */
+}
+.login_form{
+  position: relative;
+  top: 0;
+  left: 22px;
+  width: 90%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  overflow-x: hidden;
+  animation: login_form_rotate 2s;
+}
+.profile{
+  margin: auto;
+  padding-top: 35px;
+  /* background-image: url(../images/icons/person.png); */
+  background-size: cover;
+  width: 100%;
+  text-align: center;
+  color: red;
+  font-family: cursive;
+  font-size: 25px;
+  height: max-content;
+  margin-bottom: 15px;
+}
+.username input{
+  position: relative;
+  left: 35px;
+  height: 50px;
+  width: 25em;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: transparent;
+  outline: none;
+  margin-top: 20px;
+  padding-left: 15px;
+}
+#userlab{
+  position: absolute;
+   top: 188px;
+  left: 55px;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #5f6368;
+  font-size: 16px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  padding: 0 5px 0 5px;
+  -webkit-transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+  transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+  white-space: nowrap;
+  z-index: 1;
+}
+.focused #userlab{
+  transform: translateY(-140%);
+}
+.focused #username{
+  border: 2px solid rgb(79, 12, 202);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.password input{
+  position: relative;
+  left: 35px;
+  height: 50px;
+  width: 25em;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: transparent;
+  outline: none;
+  margin-top: 20px;
+  padding-left: 15px;
+}
+#passlab{
+  position: absolute;
+   top: 188px;
+  left: 55px;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #5f6368;
+  font-size: 16px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  padding: 0 5px 0 5px;
+  -webkit-transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+  transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+  white-space: nowrap;
+  z-index: 1;
+}
+.focused-pass #passlab{
+  transform: translateY(-140%);
+}
+.focused-pass #password{
+  border: 2px solid rgb(79, 12, 202);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.submit button{
+  position: absolute;
+  right: 21px;
+  width: 95px;
+  position: absolute;
+  top: 60%;
+  height: 48px;
+  border: none;
+  border-radius: 5px;
+  background-color: blue;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.submit button:active{
+  transform: scale(0.9);
+  background-color: transparent;
+  background-image: linear-gradient(rgba(10, 6, 255, 0.678),rgba(0, 0, 255, 0.541) 0.534);
+}
+.login_form p{
+  text-align: center;
+  font-size: 30px;
+  font-family: fantasy;
+}
+.login_form p:nth-child(even){
+  color: blue;
+  font-size: 25px;
+}
+.login_form p:nth-child(odd){
+  color: rgb(0, 0, 0);
+}
+@keyframes click {
+  0%{
+    background-image: linear-gradient(rgba(0, 0, 255, 0.521));
+  }
+  100%{
+    background-image: linear-gradient(rgb(0, 0, 255));
+  }
+}
+@keyframes login_form_rotate {
+  0%{
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    transform: rotate(360deg);
+    visibility: hidden;
+  }
+  100%{
+  width: 90%;
+  height: 100%;
+    opacity: 1;
+    transform: rotate(0deg);
+    visibility: visible;
+  }
+}

@@ -81,13 +81,17 @@
   0% {
     width: 0vw;
     height: 0vh;
+    opacity: 0;
+    visibility: hidden;
   }
   5%{
       height: 5px;
   }
   100% {
+    visibility: visible;
     width: 50vw;
-    height: 50vh;
+    height: max-content;
+    opacity: 1;
   }
 }
 @keyframes nav-open {
@@ -102,5 +106,23 @@
   }
   100% {
     height: 150px;
+  }
+}
+@keyframes clickable {
+  0%{
+         background-color: rgb(148, 130, 126);
+         border-radius: 150%;
+  }
+  100%{
+background-color: transparent;
+border-radius: 0px;
+  }
+}
+@keyframes plus-rotator {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(180deg);
   }
 }
