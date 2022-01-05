@@ -1,5 +1,4 @@
 <?php
-header('Cache-Control: no-cache, must-revalidate');
 include '../config/conn.php';
 session_start();
 if (isset($_POST['event']) && $_POST['event'] == "retailer_message_list" || isset($_GET['event']) && $_GET['event'] == "retailer_message_list") {
@@ -14,11 +13,20 @@ if (isset($_POST['event']) && $_POST['event'] == "retailer_message_list" || isse
           $result2 = mysqli_query($conn,$sql2);
           $row2 = mysqli_fetch_assoc($result2);
           $overall_loan_amount = $row2['loan_amount_sum'];
-          
+
+          $sql3= "SELECT * FROM retailer_list WHERE userId='$username' && retailerId='$retailerId'";
+          $result34 = mysqli_query($conn,$sql3);
+          $result3 = mysqli_fetch_assoc($result34);
+          $name = $result3['retailer_name'];
+          $image = $result3['retailer_image'];
+          $mobile_no = $result3['mobile_no'];
             $someArray = [];
             array_push($someArray, [
                 'status'  => "200",
-                'loan_amount' => $overall_loan_amount
+                'loan_amount' => $overall_loan_amount,
+                'name' =>$name,
+                'image' =>$image,
+                'mobile_no' =>$mobile_no
             ]);
     while ($row = mysqli_fetch_assoc($result)) {
         array_push($someArray, [

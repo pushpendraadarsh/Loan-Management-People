@@ -1,12 +1,33 @@
+<?php
+if (isset($_GET['url'])) {
+  $url = $_GET['url'];
+}else {
+  $url = "";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../assets/css/lockscreen.css" />
+    <link rel="stylesheet" href="../assets/css/lockscreen.css?1.2.5" />
     <link rel="stylesheet" href="../assets/css/assets.app.css" />
       <script src="../assets/js/main.app.js"></script>
+      <script>
+         function hoverdiv(e,divid){
+var left_p  = e.clientX  + "px";
+var top_p  = e.clientY  + "px";
+
+var div = document.getElementById(divid);
+
+div.style.left = left_p;
+div.style.top = top_p;
+$("#"+divid).toggle();
+
+return false;
+}
+      </script>
     <title>lockscreen</title>
   </head>
   <body>
@@ -327,8 +348,10 @@
         <div class="circle"></div>
       </div>
     </div>
-
-    <div class="login_container display-none" id="login_cont">
+    
+    <div class="login_container display-none" onmouseover="hoverdiv(event,'divtoshow')" onmouseout="hoverdiv(event,'divtoshow')" id="login_cont">
+             
+    <div id="divtoshow" style="position: fixed;cursor:none; display:none; z-index:1;">Pushpendra Group</div>
              <div class="container">
               <div class="login_form">
                 <div class="booting display-none">
@@ -337,6 +360,10 @@
                 <div class="profile">Pushpendra Group</div>
                 <p>Log in</p>
                 <p>Use PGGROUP Account</p>
+                <!-- <div class="userImage">
+                  <div class="UserPic"></div>
+                  adarsh pushpendra pandey
+                </div> -->
                    <div class="username">
                    <label for="username" id="userlab">Enter Username or Mobile No</label>
                      <input type="username" id="username" autocomplete="off">
@@ -354,39 +381,30 @@
               </div>
              </div>
     </div>
-
+    <div id="url">
+      <?php echo $url; ?>
+    </div>
     <script src="../assets/js/function.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>   
     <script>
-      /*********************LIVE TIMESTAMP UPDATE************************ */
+      /*********************LIVE TIMESTAMP UPDATE*************************/
       $('input').attr('autocomplete','off');
       //// FUNCTIONS ALL EXTERNAL ASSETS////
-function timer(){
-  let output = document.getElementById("time_span");
-    var currentTime = new Date()
-   var hours = currentTime.getHours()
-   var minutes = currentTime.getMinutes()
-   var sec = currentTime.getSeconds()
-   if (minutes < 10){
-       minutes = "0" + minutes
-   }
-   if (sec < 10){
-       sec = "0" + sec
-   }
-   var t_str = hours + ":" + minutes + ":" + sec + " ";
-    output.innerHTML = t_str;
-    setTimeout(timer,1000);
-   }
-   /********************dATE STAMP****************** */
-   function date_stamp(out) {
-    let output = document.getElementById(out);
-    const d = new Date();
-const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-output.innerHTML =d.getDate()+" "+months[d.getMonth()]+" "+d.getFullYear();
-  }
+function date_time(){
+  let output_date = document.getElementById("date_span");
+  let output_time = document.getElementById("time_span");
+  $.ajax({
+    url: '../api/date_time',
+    dataType: "json",
+    success: function(response){
+    output_time.innerHTML = response.time;
+    output_date.innerHTML = response.date;
+    setTimeout(date_time,1000);
+     }
+  });
+}
   /***********************************************************/
   $(document).ready(function(){
-
   $('#username').focus(function(){
   $('.username').addClass('focused');
 });
@@ -438,8 +456,7 @@ $("#next").click(function(){
   }
 });
   }
-        timer();
-        date_stamp("date_span");
+  date_time();
  let lockRange = document.getElementById("lockRange");
    lockRange.oninput = function() {
     if (lockRange.value >= 40) {
@@ -447,6 +464,8 @@ $("#next").click(function(){
       unlocked();
     }
  }  
+
+
  });
 </script>
   </body>

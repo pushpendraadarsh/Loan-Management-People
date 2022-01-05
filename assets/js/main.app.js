@@ -1,4 +1,5 @@
 /***********************POPUP BOOTING LOADING************************** */
+/***************************if open preloader **************
 function loading() {
   let preloader = document.getElementById("home_popup");
   let main_content = document.getElementById("main_content");
@@ -9,17 +10,27 @@ function loading() {
     document.getElementById("body").style.overflowY = 'auto';
     main_content.classList.remove("display-none");
     preloader.classList.add("display-none");
-  }, 7000);
+    $("#home_popup").empty();
+  }, 1500);
+}
+*************************************************************/
+function loading() {
+  let preloader = document.getElementById("home_popup");
+  let main_content = document.getElementById("main_content");
+  // document.getElementById("body").style.overflow = 'hidden';
+  // main_content.classList.add("display-none");
+  preloader.classList.add("display-none");
+    $("#home_popup").empty();
+  setTimeout(() => {
+    document.getElementById("body").style.overflowX = 'hidden';
+    document.getElementById("body").style.overflowY = 'auto';
+    main_content.classList.remove("display-none");
+    preloader.classList.add("display-none");
+    $("#home_popup").empty();
+  }, 1500);
 }
 /************** PARTITION PRELOADER******************* */
-function partition_preloader() {
-  let partition = document.getElementById("partition");
-  partition.classList.add("display-none");
-  setTimeout(() => {
-    partition.classList.remove("display-none");
-    partition.classList.add("rotate_360deg");
-  }, 5500);
-}
+
 /***************Normal REDIRECT************* */
 function redirect(url) {
     location.href = url;

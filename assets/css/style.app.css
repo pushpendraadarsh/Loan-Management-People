@@ -23,7 +23,7 @@ body{
   width: 50vw;
   height: 60vh;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  animation: settle-up 2s 5s;
+  animation: settle-up 1s 0.5s;
   overflow-y: hidden;
   overflow-x: hidden;
 }

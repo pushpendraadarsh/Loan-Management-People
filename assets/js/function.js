@@ -64,7 +64,7 @@ function login_booting(event) {
   }
   
 }
-function pass_login(password) {
+function pass_login(password,url) {
   $.ajax({
     type: 'POST',
     url: '../api/login.php',
@@ -79,7 +79,11 @@ function pass_login(password) {
     success: function(response){
         if (response == "200") {
           $("#submit").html("Success");
-           redirect("../dashboard");
+          if (url == "" || url == null || url == undefined) {
+            redirect("../dashboard");
+          }else{
+           redirect(url);
+          }
         }else if (response == "100"){
           login_booting("end");
             alert("Error password");
@@ -118,7 +122,8 @@ function username_check(u) {
             if (password == "") {
               alert("please enter password!!")
             }else{
-            pass_login(password);
+              let url = $("#url").html();
+              pass_login(password,url);
             }
           });
         }else if (response == "100"){

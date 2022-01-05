@@ -27,6 +27,7 @@ if (isset($_COOKIE['unlock'])) {
     <link rel="stylesheet" href="assets/css/keyframe.app.css" />
     <link rel="stylesheet" href="assets/css/assets.app.css" />
     <script src="assets/js/main.app.js"></script>
+    <link rel="stylesheet" href="assets/css/m.style.css">
     <title>A Loan Management System || <?php echo $name; ?></title>
   </head>
 
@@ -100,6 +101,7 @@ if (isset($_COOKIE['unlock'])) {
     <div id="main_content">
       <!--upper_layout Start-->
       <div class="upper_layout">
+        
         <div class="ul-ele">
           <div class="ul-ele-items" id="time">Check Date</div>
           <div class="ul-ele-items" id="lock">Lock</div>
@@ -212,6 +214,10 @@ if (isset($_COOKIE['unlock'])) {
 
       <script>
         $(document).ready(function() {
+          if ($(document).ready()) {
+            loading();
+          }
+          
           $("#lock").click(function() {
             alert("Do You Want to Locked");
             lock_screen("remove", "unlock");
@@ -258,7 +264,6 @@ if (isset($_COOKIE['unlock'])) {
           let user_image_tag = $("#user_image");
           $("#user_image").css("backgroundImage", "url('assets/images/users/<?php echo $images; ?>')");
           $("#dp_full_view").css("backgroundImage", "url('assets/images/icons/blank_dp.png')");
-          loading();
           partition_preloader();
         });
       </script>
